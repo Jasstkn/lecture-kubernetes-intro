@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs
+  labels:
+    app: nginx-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-rs
+  template:
+    metadata:
+      labels:
+        app: nginx-rs
+    spec:
+      initContainers:
+      - name: index-generator
+        image: busybox:1.31.0
+        command: ['sh', '-c', 'wget -O- https://raw.githubusercontent.com/express42/otus-platform-snippets/master/Module-02/Introduction-to-Kubernetes/wget.sh | sh']
+        volumeMounts:
+        - name: app
+          mountPath: /app
+      containers:
+      - name: nginx
+        image: nginx:latest
+        env:
+        - name: LOG_LEVEL
+          value: "error"
+        ports:
+        - name: http
+          containerPort: 80
+        readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+        livenessProbe:
+            tcpSocket:
+              port: 80

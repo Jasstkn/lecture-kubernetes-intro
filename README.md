@@ -1,4 +1,6 @@
-# Pre-demo steps
+# DEMO
+
+## Pre-demo steps
 
 1. Install `kubectl` tool for your OS.
 
@@ -9,6 +11,8 @@
 ```bash
 minikube addons enable ingress
 ```
+
+## DEMO 1
 
 4. Let's deploy pod, rs, deployment demo
 
@@ -96,6 +100,8 @@ Events:
   Normal  ScalingReplicaSet  45s    deployment-controller  Scaled down replica set nginx-75b6496574 to 0
 # we can check how it was describe our deployment again ^
 ```
+
+## DEMO 2
 
 5. Let's deploy service and ingress and play around it.
 

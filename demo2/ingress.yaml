@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: nginx
+  name: web
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    web.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
       - path: /web
         backend:
-          serviceName: nginx
+          serviceName: web
           servicePort: 8080

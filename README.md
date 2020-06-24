@@ -112,7 +112,8 @@ kubectl get svc
 web        ClusterIP   10.99.190.198   <none>        8080/TCP   15s
 # nice, let's access to our service from one the containers:
 kubectl exec -ti web-XXXX -- sh
-apt install iputils-ping net-tools
+apk update
+apk add iputils bind-tools
 nslookup web
 Name:      web
 Address 1: 10.99.190.198 web.default.svc.cluster.local

@@ -135,6 +135,10 @@ kubectl get ingress
 NAME    HOSTS   ADDRESS         PORTS   AGE
 web   *       192.168.64.15   80      35s
 
+# if IP doesn't appear for some time, get it from the following command
+minikube ip
+192.168.64.15
+
 # make curl into IP address below ADDRESS column with /web at the end
 curl 192.168.64.15/web
 
